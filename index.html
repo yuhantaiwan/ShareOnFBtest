@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="fb:app_id"          content="144329303540124" />
   <meta property="og:url"             content="https://yuhantaiwan.github.io/ShareOnFBtest">
   <meta property="og:type"            content="website" />
   <meta property="og:title"           content="今網科技" />
@@ -72,11 +73,11 @@
       let description = ""
       let image = "";
       if (selectedPic.value == pic1Value) {
-        description = "you choose pic1"
+        description = "you choose pic1";
         image = pic1Value;
         console.log(description, image);
       } else {
-        description = "you choose pic2"
+        description = "you choose pic2";
         image = pic2Value;
         console.log(description, image);
       }
@@ -99,8 +100,8 @@
       })
     }, function(response){
       // Debug response (optional)
-      console.log(response);
-});
+        console.log(response);
+      });
     }
   </script>
 </body>
