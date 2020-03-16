@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:url"             content="https://yuhantaiwan.github.io/ShareOnFBtest">
+  <meta property="og:type"            content="website" />
+  <meta property="og:title"           content="今網科技" />
+  <meta property="og:description"     content="balalalala" />
+  <meta property="og:image"           content="https://upload.cc/i1/2020/03/04/qCXiRy.png" />
+  <title>Document</title>
+  <style>
+    .container{
+      max-width: 768px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .shareBtns {
+      margin-top: 20px;
+    }
+    .fbShare {
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '144329303540124',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v6.0'
+      });
+    };
+  </script>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <div class="container">
+    <header>
+      <h1>iSharing</h1>
+    </header>
+    <main>
+      <form action="#" id="selectPic">
+        <label for="pic">
+          <img src="https://upload.cc/i1/2020/03/16/Hf3sn7.jpg" alt="">
+        </label>
+        <input type="radio" name="pic" value="https://upload.cc/i1/2020/03/16/Hf3sn7.jpg">
+
+        <label for="pic">
+          <img src="https://upload.cc/i1/2020/03/16/54MZJA.jpg
+          " alt="">
+        </label>
+        <input type="radio" name="pic" value="https://upload.cc/i1/2020/03/16/54MZJA.jpg
+        ">
+      </form>
+
+      <div class="shareBtns">
+        <button class="fbShare" onclick="return shareFB()">FB</button>
+      </div>
+
+    </main>
+  </div>
+  <script>
+    // let selectedPic = document.querySelector("input[name='pic']:ckecked");
+    let pic1Value = "https://upload.cc/i1/2020/03/16/Hf3sn7.jpg";
+    let pic2Value = "https://upload.cc/i1/2020/03/16/54MZJA.jpg";
+    // console.log(selectedPic.value);
+
+    function shareFB() {
+      let selectedPic = document.querySelector("input[name='pic']:checked");
+      let title = "今網科技"
+      let description = ""
+      let image = "";
+      if (selectedPic.value == pic1Value) {
+        description = "you choose pic1"
+        image = pic1Value;
+        console.log(description, image);
+      } else {
+        description = "you choose pic2"
+        image = pic2Value;
+        console.log(description, image);
+      }
+
+      shareNewOG(window.location.href, title, description, image);
+      return false;
+    }
+
+    function shareNewOG(newLink, newTitle, newDescription, newImage) {
+      FB.ui({
+      method: 'share_open_graph',
+      action_type: 'og.shares',
+      action_properties: JSON.stringify({
+        object: {
+          'og:url': newLink,
+          'og:title': newTitle,
+          'og:description': newDescription,
+          'og:image': newImage
+        }
+      })
+    }, function(response){
+      // Debug response (optional)
+      console.log(response);
+});
+    }
+  </script>
+</body>
+</html>
